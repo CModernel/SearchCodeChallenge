@@ -2,33 +2,35 @@ package com.sonder.codechallenge.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sonder.codechallenge.ui.models.SearchActivityStates
 import com.sonder.domain.usecases.search.ClearSearchResultsUseCase
+import com.sonder.domain.usecases.search.UpdateSearchQueryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
+    private val updateSearchQueryUseCase: UpdateSearchQueryUseCase,
     private val clearSearchResultsUseCase: ClearSearchResultsUseCase
 ) : ViewModel() {
 
-    // Define activity states class
-//    private val _state: MutableStateFlow<SearchActivityStates> = MutableStateFlow(SearchActivityStates.Started)
-//    val state = _state.asStateFlow()
-
-    fun onCreate() {
-        // Started state
-    }
+    private val _state: MutableStateFlow<SearchActivityStates> = MutableStateFlow(
+        SearchActivityStates.Started)
+    val state = _state.asStateFlow()
 
     fun updateSearchQuery(query: String) {
         viewModelScope.launch {
-            clearSearchResults()
+            updateSearchQueryUseCase.execute(query)
+            _state.value = SearchActivityStates.Searching(query)
         }
     }
 
     fun clearSearchQuery() {
         clearSearchResults()
-        // Emit Started State
+        _state.value = SearchActivityStates.Started
     }
 
     private fun clearSearchResults() {
@@ -36,5 +38,4 @@ class MainActivityViewModel @Inject constructor(
             clearSearchResultsUseCase.execute(Unit)
         }
     }
-
 }

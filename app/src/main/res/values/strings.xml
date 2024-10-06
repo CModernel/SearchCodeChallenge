@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Sonder Code Challenge</string>
     <string name="hint_search">Search</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="search_started_text">Search our comprehensive library of resources</string>
+    <string name="searching_for_text">Searching for \'%1$s\'</string>
+    <string name="showing_results_for_text">Showing results for \'%1$s\'</string>
+    <string name="addiction_and_dependency">Addiction and dependency</string>
 </resources>

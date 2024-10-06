@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.sonder.codechallenge.R
 import com.sonder.codechallenge.databinding.ActivityMainBinding
+import com.sonder.codechallenge.ui.models.SearchActivityStates
 import com.sonder.codechallenge.ui.theme.SonderCodeChallengeTheme
 import com.sonder.codechallenge.utils.repeatOnLifecycleWhenResumed
 import com.sonder.common.safeString
@@ -42,27 +43,51 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.searchToolbar)
         binding.apply {
             etSearchToolbar.setOnQueryTextListener(createQueryTextListener())
-            // Temporary. Please remove.
-            tvSearchTitle.text = "Showing results for 'Sleep'"
-            searchProgressBar.visibility = View.VISIBLE
         }
     }
 
     private fun observeViewModel() {
         repeatOnLifecycleWhenResumed {
-            // Observe states
-            // When config loaded state is received, add fragments
+            viewModel.state.collect { state ->
+                when (state) {
+                    is SearchActivityStates.Started -> {
+                        binding.searchProgressBar.visibility = View.GONE
+                        binding.tvSearchTitle.text = getString(R.string.search_started_text)
+                        clearFragments()
+                    }
+                    is SearchActivityStates.Searching -> {
+                        binding.tvSearchTitle.text = getString(R.string.searching_for_text, state.query)
+                        binding.searchProgressBar.visibility = View.VISIBLE
+                        addMainFragment()
+                    }
+                    is SearchActivityStates.Results -> {
+                        binding.tvSearchTitle.text = getString(R.string.showing_results_for_text, state.query)
+                        binding.searchProgressBar.visibility = View.GONE
+                    }
+                    is SearchActivityStates.Error -> {
+                        binding.tvSearchTitle.text = state.message
+                        binding.searchProgressBar.visibility = View.GONE
+                    }
+                }
+            }
         }
     }
 
-
-    private fun addFragments(sections: List<SearchSectionResult>) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        sections.forEach {
-            val fragment = MainFragment.newInstance()
-            fragmentTransaction.add(R.id.searchFragmentContainer, fragment, MainFragment::class.java.simpleName)
+    private fun clearFragments() {
+        supportFragmentManager.fragments.forEach {
+            supportFragmentManager.beginTransaction().remove(it).commitNowAllowingStateLoss()
         }
-        fragmentTransaction.commit()
+    }
+
+    private fun addMainFragment() {
+        val fragmentTag = MainFragment::class.java.simpleName
+        val fragment = supportFragmentManager.findFragmentByTag(fragmentTag)
+            ?: MainFragment.newInstance()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.searchFragmentContainer, fragment, fragmentTag)
+            commitNow()
+        }
     }
 
     private fun createQueryTextListener() = object : SearchView.OnQueryTextListener {
