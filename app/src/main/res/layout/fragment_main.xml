@@ -27,7 +27,7 @@
             android:ellipsize="end"
             android:maxLines="3"
 -->
-
+<!-- Will not be using RecyclerView for this requirement
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/searchSectionRecyclerView"
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_horizontal_detailed"
             tools:orientation="horizontal" />
-
+-->
     </LinearLayout>
 
 </layout>
