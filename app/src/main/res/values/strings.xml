@@ -6,4 +6,6 @@
     <string name="searching_for_text">Searching for \'%1$s\'</string>
     <string name="showing_results_for_text">Showing results for \'%1$s\'</string>
     <string name="addiction_and_dependency">Addiction and dependency</string>
+    <string name="an_error_has_ocurred_text">An error has ocurred: %1$s</string>
+    <string name="no_results_text">No results were found for your search</string>
 </resources>
