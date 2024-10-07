@@ -1,5 +1,6 @@
-package com.sonder.domain.repositories
+package com.sonder.data
 
+import com.sonder.domain.repositories.SearchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject

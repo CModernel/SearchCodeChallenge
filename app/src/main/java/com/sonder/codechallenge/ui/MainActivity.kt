@@ -1,28 +1,15 @@
 package com.sonder.codechallenge.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.sonder.codechallenge.R
 import com.sonder.codechallenge.databinding.ActivityMainBinding
 import com.sonder.codechallenge.ui.models.SearchActivityStates
-import com.sonder.codechallenge.ui.theme.SonderCodeChallengeTheme
 import com.sonder.codechallenge.utils.repeatOnLifecycleWhenResumed
 import com.sonder.common.safeString
-import com.sonder.domain.models.SearchSectionResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -58,6 +58,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":data")) // Data dependency should only go in App build gradle, but Presentation layer is in App Module
     implementation(project(":common"))
     implementation(libs.glide)
     implementation(libs.hilt.android)
@@ -85,6 +86,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.androidx.kotlin.stdlib)
     implementation(libs.kotlin.stdlib.v157)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.ktor)
+    implementation(libs.coil.network.okhttp)
+    implementation(libs.coil)
 }
 
 // Allow references to generated code
