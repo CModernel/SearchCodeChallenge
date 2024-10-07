@@ -57,6 +57,10 @@ class MainFragment : Fragment() {
                     is SearchFragmentStates.Error -> {
                         // Show error state
                     }
+
+                    SearchFragmentStates.NoResults -> {
+                        // Show no results state
+                    }
                 }
             }
         }
