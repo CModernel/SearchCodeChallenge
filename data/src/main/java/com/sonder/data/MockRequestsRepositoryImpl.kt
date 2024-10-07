@@ -2,12 +2,13 @@ package com.sonder.data
 
 import com.sonder.domain.models.SearchContentType
 import com.sonder.domain.models.SearchRequestParams
+import com.sonder.domain.repositories.MockRequestsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-object MockRequests {
+class MockRequestsRepositoryImpl : MockRequestsRepository {
 
-    fun getErrorRequestParams(): Flow<SearchRequestParams> = flow {
+    override fun getErrorRequestParams(): Flow<SearchRequestParams> = flow {
         val request = SearchRequestParams(
             sectionTitle = "Resources",
             query = "error",
@@ -21,7 +22,7 @@ object MockRequests {
         emit(request)
     }
 
-    fun getHorizontalCompactRequestParams(): Flow<SearchRequestParams> = flow {
+    override fun getHorizontalCompactRequestParams(): Flow<SearchRequestParams> = flow {
         val request = SearchRequestParams(
             sectionTitle = "Topics",
             query = "mock",
@@ -32,7 +33,7 @@ object MockRequests {
         emit(request)
     }
 
-    fun getVerticalCompactRequestParams(): Flow<SearchRequestParams> = flow {
+    override fun getVerticalCompactRequestParams(): Flow<SearchRequestParams> = flow {
         val request = SearchRequestParams(
             sectionTitle = "Categories",
             query = "mock",
@@ -47,7 +48,7 @@ object MockRequests {
         emit(request)
     }
 
-    fun getHorizontaDetailedRequestParams(): Flow<SearchRequestParams> = flow {
+    override fun getHorizontaDetailedRequestParams(): Flow<SearchRequestParams> = flow {
         val request = SearchRequestParams(
             sectionTitle = "Tools and services",
             query = "mock",
@@ -64,7 +65,7 @@ object MockRequests {
         emit(request)
     }
 
-    fun getVerticalDetailedRequestParams(): Flow<SearchRequestParams> = flow {
+    override fun getVerticalDetailedRequestParams(): Flow<SearchRequestParams> = flow {
         val request = SearchRequestParams(
             sectionTitle = "Resources",
             query = "mock",

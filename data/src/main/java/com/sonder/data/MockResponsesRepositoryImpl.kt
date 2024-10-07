@@ -5,17 +5,18 @@ import com.sonder.domain.models.SearchActionType
 import com.sonder.domain.models.SearchContentType
 import com.sonder.domain.models.SearchItem
 import com.sonder.domain.models.SearchSectionResult
+import com.sonder.domain.repositories.MockResponsesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-object MockResponses {
+class MockResponsesRepositoryImpl : MockResponsesRepository {
 
     // Error result
-    fun getErrorResult(): Flow<Exception> = flow {
+    override fun getErrorResult(): Flow<Exception> = flow {
         emit(Exception("404"))
     }
 
-    fun getHorizontalCompactSearchResults(): Flow<SearchSectionResult> = flow {
+    override fun getHorizontalCompactSearchResults(): Flow<SearchSectionResult> = flow {
         val searchItems = listOf(
             SearchItem(
                 id = "1",
@@ -76,7 +77,7 @@ object MockResponses {
         )
     }
 
-    fun getVerticalCompactSearchResults(): Flow<SearchSectionResult> = flow {
+    override fun getVerticalCompactSearchResults(): Flow<SearchSectionResult> = flow {
         emit(
             SearchSectionResult(
                 sectionTitle = "Categories",
@@ -86,7 +87,7 @@ object MockResponses {
         )
     }
 
-    fun getHorizontalDetailedSectionResults(): Flow<SearchSectionResult> = flow {
+    override fun getHorizontalDetailedSectionResults(): Flow<SearchSectionResult> = flow {
         val searchItems = listOf(
             SearchItem(
                 id = "1",
@@ -171,7 +172,7 @@ object MockResponses {
         )
     }
 
-    fun getVerticalDetailedSectionResults(): Flow<SearchSectionResult> = flow {
+    override fun getVerticalDetailedSectionResults(): Flow<SearchSectionResult> = flow {
         val searchItems = listOf(
             SearchItem(
                 id = "1",

@@ -7,3 +7,7 @@ fun String?.safeString(default: String = ""): String {
         this
     }
 }
+
+fun String.capitalizeFirstLetter() = this.lowercase().replaceFirstChar {
+    it.uppercase()
+}
