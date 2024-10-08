@@ -91,7 +91,6 @@ class MainFragmentViewModel @Inject constructor(
                 .catch { exception ->
                 _state.value = SearchFragmentStates.Error(message = exception.message ?: "Unknown error occurred")
             }.collect()
-            //updateSearchStateUseCase.execute(SearchState.Idle)
         }
     }
 

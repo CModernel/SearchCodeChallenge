@@ -1,6 +1,5 @@
 package com.sonder.domain.usecases.request
 
-import android.util.Log
 import com.sonder.domain.models.SearchSectionResult
 import com.sonder.domain.repositories.MockRequestsRepository
 import com.sonder.domain.repositories.MockResponsesRepository
