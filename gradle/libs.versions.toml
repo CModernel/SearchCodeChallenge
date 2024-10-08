@@ -20,6 +20,9 @@ glide = "4.16.0"
 cardview = "1.0.0"
 composeCompiler = "1.5.7"
 coil = "3.0.0-alpha06"
+mockk = "1.13.11"
+junitJupiter = "5.10.3"
+kotlinx-coroutines-test = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,6 +55,10 @@ coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref 
 coil = { group = "io.coil-kt.coil3", name = "coil", version.ref = "coil" }
 coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
+
+mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junitJupiter" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

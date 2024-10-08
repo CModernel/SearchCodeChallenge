@@ -3,11 +3,11 @@ package com.sonder.di
 import com.sonder.data.MockRequestsRepositoryImpl
 import com.sonder.data.MockResponsesRepositoryImpl
 import com.sonder.data.SearchRepositoryImpl
-import com.sonder.data.SearchResultRepositoryImpl
+import com.sonder.data.SearchStateRepositoryImpl
 import com.sonder.domain.repositories.MockRequestsRepository
 import com.sonder.domain.repositories.MockResponsesRepository
 import com.sonder.domain.repositories.SearchRepository
-import com.sonder.domain.repositories.SearchResultRepository
+import com.sonder.domain.repositories.SearchStateRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,8 +26,8 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideSearchResultRepository(): SearchResultRepository {
-        return SearchResultRepositoryImpl()
+    fun provideSearchResultRepository(): SearchStateRepository {
+        return SearchStateRepositoryImpl()
     }
 
     @Provides
