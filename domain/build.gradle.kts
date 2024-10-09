@@ -30,6 +30,7 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.junit.jupiter)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 }
 
 // Allow references to generated code
