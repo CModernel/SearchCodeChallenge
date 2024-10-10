@@ -12,5 +12,4 @@ class RequestResponseMapper @Inject constructor() {
 
         return result.copy(items = filteredItems)
     }
-
 }
