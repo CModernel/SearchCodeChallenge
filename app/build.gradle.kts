@@ -90,6 +90,10 @@ dependencies {
     implementation(libs.coil.network.ktor)
     implementation(libs.coil.network.okhttp)
     implementation(libs.coil)
+    testImplementation(libs.mockk)
+    //testImplementation(libs.junit.jupiter)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
 }
 
 // Allow references to generated code
