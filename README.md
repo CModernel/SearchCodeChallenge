@@ -1,52 +1,41 @@
 # Android Search Challenge - Clean Architecture
 
-This project demonstrates an Android Search Functionality using Clean Architecture principles, with a focus on Flow and View State Management. The application is designed as a multi-module structure with separate app, data, and common modules. The project includes mock data for the search feature, avoiding the need for network requests. It provides a simple, user-friendly search experience and showcases best practices in Android development, including ViewModels, UseCases, and Repository patterns.
+This project demonstrates an Android Search Functionality using **Clean Architecture** principles, with a focus on **Flow** and **View State Management**. 
+The application is designed as a multi-module structure with separate app, data, and domain modules.
+
+The project includes mock data for the search feature, avoiding the need for network requests. It provides a simple, user-friendly search experience and showcases best practices in Android development, including **Jetpack Compose** for the UI, **Coil** for image rendering, **ViewModels**, **UseCases**, and **Repository** patterns.
 
 ## Project Architecture
 
-The project is structured around a multi-module Clean Architecture design, which separates the app into different layers to promote scalability, testability, and maintainability. 
+The project is structured around a multi-module **Clean Architecture** design, which separates the app into different layers to promote scalability, testability, and maintainability. 
+
+<img src="/app/images/Sonder Search App.gif" width="30%" />
 
 The layers are:
 	
--	App Module: Manages the UI components (Activities, Fragments) and handles user interactions. It communicates with ViewModels to display data.
--	Domain Module: Contains the core business logic. This layer is independent of frameworks and holds:
+-	**App Module**: Manages the UI components (Activities, Fragments) and handles user interactions. It communicates with ViewModels to display data. The UI is implemented using Jetpack Compose, which simplifies building dynamic UI components in a declarative way.
+-	**Domain Module**: Contains the core business logic. This layer is independent of frameworks and holds:
     -	UseCases: Define the actions that can be performed in the app.
     -	Repository Interfaces: Abstract definitions for data handling, with implementations in the Data module.
--	Data Module: Provides the data to the app. It includes:
+-	**Data Module**: Provides the data to the app. It includes:
     -	Repository Implementations: Actual implementations of the repository interfaces.
     -	Mock Data: Simulates search results and error scenarios.
--	Common Module: Holds shared utilities and components used across the app.
+-	**Common Module**: Holds shared utilities and components used across the app.
 
 > [!NOTE]
 > Unit tests were implemented for the ViewModels, Repositories and Use-Cases. This ensures the correct interactions between the data layer and UI logic. 
 
-## Mock Data
-
-The project uses predefined mock data to simulate various scenarios
-- Success Scenario: The search query "mock" returns mock results.
--	Error Scenario: The search query "error" simulates an error message.
- 
-Mock request objects are structured as follows:
-  ```
-  data class SearchRequestParams(
-    val sectionTitle: String,
-    val query: String,
-    val size: Int = 10,
-    val contentTypes: List<String>
-  )
-  ```
-Results are modeled by SearchSectionResult objects, each containing a list of SearchItem objects, which include properties such as title, description, contentType, and action.
-
 ## Screens and Flow
+The project uses predefined mock data to simulate different scenarios during the search functionality. The app’s flow adapts based on user input and search results:
 
-1.	Search State:
-    -	Initial screen displays a prompt: “Search our comprehensive library of resources.”
-    -	As users enter queries, the UI updates with real-time feedback such as: “Searching for ‘{query}’”.
-2.	Result Display:
-    -	The app displays different sections based on the search query. These sections can include various types of search results and are arranged in a specified chronological order.
-    -	Titles and views dynamically adapt based on the search outcome.
-3.	Error State:
-    -	If no results are found for a query or the query "error" is entered, the app will display: “We apologize, but it seems like we’re facing a temporary hiccup loading search results.”
+1. **Initial screen**:
+	- The app starts with the prompt: “Search our comprehensive library of resources.”
+	- As users enter queries, the UI updates dynamically with feedback like: “Searching for ‘{query}’” and displays a progress indicator during the simulated data fetch.
+2. **Search Results**:
+	- The query "mock" simulates a success scenario, returning results based on mock data. Each section title and layout adapts to the data provided, with results modeled by SearchSectionResult objects.
+ 	- Images within the search results are loaded efficiently using Coil to enhance the performance of the app.
+3. **Error State**:
+	- The query "error" triggers the error scenario, where no results are found. The error state is also simulated through mock data.
 
 ## How to Run the Project
 
